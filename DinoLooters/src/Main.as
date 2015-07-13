@@ -1,27 +1,26 @@
 package
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	
+	import net.flashpunk.Engine;
+	import net.flashpunk.FP;
+	import worlds.*;
 	/**
 	 * ...
 	 * @author madnotdead
 	 */
-	public class Main extends Sprite 
+	public class Main extends Engine 
 	{
 		
 		public function Main() 
 		{
-			if (stage) init();
-			else addEventListener(Event.ADDED_TO_STAGE, init);
+			super(600, 600);
 		}
 		
-		private function init(e:Event = null):void 
+		override public function init():void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
+			FP.world = new Splash();
+			super.init();
+			trace("game initialized");
 		}
-		
 	}
 	
 }
